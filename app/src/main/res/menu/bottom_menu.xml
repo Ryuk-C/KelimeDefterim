@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listelerim_bnb"
+        android:icon="@drawable/list"
+        android:title="Listelerim" />
+    <item
+        android:id="@+id/akademi_bnb"
+        android:icon="@drawable/akademi"
+        android:title="Akademi" />
+    <item
+        android:id="@+id/hesabim_bnb"
+        android:icon="@drawable/person"
+        android:title="Hesabım" />
+</menu>
