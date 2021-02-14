@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_fragment"
+    app:startDestination="@id/listelerimFragment">
+
+    <fragment
+        android:id="@+id/listelerimFragment"
+        android:name="com.example.haznedar.kelimedefterim.Activity.ListelerimFragment"
+        android:label="ListelerimFragment" >
+        <action
+            android:id="@+id/action_listelerimFragment_to_yeniKelimeEkle"
+            app:destination="@id/yeniKelimeEkle"
+            app:enterAnim="@android:anim/accelerate_interpolator"
+            app:exitAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/yeniKelimeEkle"
+        android:name="com.example.haznedar.kelimedefterim.Activity.YeniKelimeEkle"
+        android:label="YeniKelimeEkle" >
+        <action
+            android:id="@+id/action_yeniKelimeEkle_to_listelerimFragment"
+            app:destination="@id/listelerimFragment" />
+    </fragment>
+</navigation>

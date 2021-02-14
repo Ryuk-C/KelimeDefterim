@@ -1,11 +1,9 @@
 package com.example.haznedar.kelimedefterim.Activity
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.EditText
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,10 +13,10 @@ import com.example.haznedar.kelimedefterim.Database.*
 import com.example.haznedar.kelimedefterim.R
 import com.example.haznedar.szlk.ApiUtils
 import kotlinx.android.synthetic.main.anasayfa_layout.*
-import kotlinx.android.synthetic.main.yeni_kelime_ekle.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class ListelerimFragment : Fragment() {
 
@@ -29,7 +27,7 @@ class ListelerimFragment : Fragment() {
     private lateinit var kdi: KelimelerDaoInterface
     private lateinit var searchView: SearchView
 
-      var dilByKullaniciID : Int? = null
+    private var dilByKullaniciID : Int? = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -48,7 +46,7 @@ class ListelerimFragment : Fragment() {
 
                 kelimeListele(id)
 
-                dilByKullaniciID = id
+                Bundle(id)
 
             }
 
@@ -65,57 +63,10 @@ class ListelerimFragment : Fragment() {
         rvKelimeler.adapter = adapter1
 
 
-
-
         kdi = ApiUtils.getKelimelerDaoInterface()
 
         dilListele()
 
-        /*
-
-        fabNew.setOnClickListener {
-
-            val tasarim = layoutInflater.inflate(R.layout.yeni_kelime_ekle, null)
-            val Pst_Kelime = tasarim.findViewById(R.id.etYeniKelime) as EditText
-            val Pst_Karsilik = tasarim.findViewById(R.id.etYeniKelimeKarsilik) as EditText
-            val Pst_Cumle = tasarim.findViewById(R.id.etYeniCumle) as EditText
-
-            val Pst_Kelime1 = etYeniKelime.text.toString().trim()
-            val Pst_Karsilik1 = etYeniKelimeKarsilik.text.toString().trim()
-            val Pst_Cumle1 = etYeniCumle.text.toString().trim()
-
-            val ad = AlertDialog.Builder(this.context)
-            ad.setTitle("Yeni Kelime Oluştur")
-
-            ad.setView(tasarim)
-
-            ad.setPositiveButton("Oluştur"){ dialogInterface, i ->
-
-                kdi.kelimeEkle(2, Pst_Kelime1, Pst_Karsilik1 ,Pst_Cumle1 ).enqueue(object : Callback<CRUDCevap> {
-
-                    override fun onResponse(call: Call<CRUDCevap>?, response: Response<CRUDCevap>?) {
-
-                    }
-
-                    override fun onFailure(call: Call<CRUDCevap>?, t: Throwable?) {
-
-                        Log.e("Hata", "Hata 1")
-
-                    }
-                })
-
-
-            }
-
-            ad.setNegativeButton("İptal"){ dialogInterface, i ->
-
-
-            }
-
-            ad.create().show()
-        }
-
-        */
 
     }
 
@@ -147,11 +98,14 @@ class ListelerimFragment : Fragment() {
 
                     if (liste != null) {
 
-                        adapter1.update(liste as java.util.ArrayList<Kelimeler>)
-
-                    }else{
+                    adapter1.update(liste as java.util.ArrayList<Kelimeler>)
 
                     }
+
+                }else{
+                    val liste = response?.body()?.kelimeler
+                    adapter1.update(liste as java.util.ArrayList<Kelimeler>)
+
                 }
             }
 
@@ -218,6 +172,31 @@ class ListelerimFragment : Fragment() {
         })
 
     } */
+
+    fun Bundle(id: Int){
+
+        val Bundle = Bundle()
+        Bundle.putInt("dilID", id)
+        val yeniKelimeFragment = YeniKelimeEkle()
+        yeniKelimeFragment.arguments = Bundle
+
+        fabNew.setOnClickListener {
+
+            Log.e("DİlByKullaniciID = ", ""+id)
+
+
+            requireFragmentManager().beginTransaction().replace(R.id.fragmentTutucu, yeniKelimeFragment).addToBackStack(null).commit()
+
+        }
+
+
+    }
+
+
+
+
+
+
 
 
 

@@ -27,8 +27,19 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): kelimeKartiTasarimTutucu {
 
-        val tasarim = LayoutInflater.from(parent.context).inflate(R.layout.card_liste_tasarim, parent, false)
-        return kelimeKartiTasarimTutucu(tasarim)
+
+        if (kelimelerListesi.size <1){
+
+            val tasarim = LayoutInflater.from(parent.context).inflate(R.layout.wordblank, parent, false)
+            return kelimeKartiTasarimTutucu(tasarim)
+
+
+        }else{
+
+            val tasarim = LayoutInflater.from(parent.context).inflate(R.layout.card_liste_tasarim, parent, false)
+            return kelimeKartiTasarimTutucu(tasarim)
+        }
+
     }
 
     override fun onBindViewHolder(holder: kelimeKartiTasarimTutucu, position: Int) {
@@ -41,11 +52,13 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
         holder.satirCardView.setOnClickListener {
 
 
+
         }
     }
 
     override fun getItemCount(): Int {
         return kelimelerListesi.size
+
     }
 
     fun update(newList: java.util.ArrayList<Kelimeler>) {

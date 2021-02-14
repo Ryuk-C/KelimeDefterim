@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        object : CountDownTimer(2000, 500) {
+        object : CountDownTimer(1600, 500) {
             override fun onFinish() {
 
                 val sp = getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
@@ -50,7 +50,7 @@ class SplashActivity : AppCompatActivity() {
                             finish()
 
                             FancyToast.makeText(
-                                    this@SplashActivity, "Otomatik Giriş Sağlandı! id :+$ogkid",
+                                    this@SplashActivity, "Hoşgeldiniz!",
                                     FancyToast.LENGTH_LONG,
                                     FancyToast.SUCCESS, false
                             ).show()
