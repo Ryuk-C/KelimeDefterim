@@ -21,15 +21,17 @@ import kotlin.properties.Delegates
 class ListelerimFragment : Fragment() {
 
     private lateinit var urunlerListe: ArrayList<Kelimeler>
-    private lateinit var dillerListe:ArrayList<Diller>
+    private lateinit var dillerListe: ArrayList<Diller>
     private var adapter1 = kelimelerAdapter(arrayListOf())
-    private lateinit var adapter2 : dilAdapter
+    private lateinit var adapter2: dilAdapter
     private lateinit var kdi: KelimelerDaoInterface
     private lateinit var searchView: SearchView
 
-    private var dilByKullaniciID : Int? = 0
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val inflat1 = inflater.inflate(R.layout.anasayfa_layout, container, false)
 
@@ -56,7 +58,8 @@ class ListelerimFragment : Fragment() {
 
         val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
 
-        rvDil.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        rvDil.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         rvDil.adapter = adapter2
 
         rvKelimeler.layoutManager = LinearLayoutManager(this.context)
@@ -83,14 +86,17 @@ class ListelerimFragment : Fragment() {
 
     }
 
-    fun kelimeListele(id: Int){
+    fun kelimeListele(id: Int) {
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
 
 
         kdi.tumKelimeler(id).enqueue(object : Callback<KelimelerCevap> {
 
-            override fun onResponse(call: Call<KelimelerCevap>?, response: Response<KelimelerCevap>?) {
+            override fun onResponse(
+                call: Call<KelimelerCevap>?,
+                response: Response<KelimelerCevap>?
+            ) {
 
                 if (response != null) {
 
@@ -98,11 +104,11 @@ class ListelerimFragment : Fragment() {
 
                     if (liste != null) {
 
-                    adapter1.update(liste as java.util.ArrayList<Kelimeler>)
+                        adapter1.update(liste as java.util.ArrayList<Kelimeler>)
 
                     }
 
-                }else{
+                } else {
                     val liste = response?.body()?.kelimeler
                     adapter1.update(liste as java.util.ArrayList<Kelimeler>)
 
@@ -115,7 +121,7 @@ class ListelerimFragment : Fragment() {
         })
     }
 
-    fun dilListele(){
+    fun dilListele() {
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
@@ -173,7 +179,7 @@ class ListelerimFragment : Fragment() {
 
     } */
 
-    fun Bundle(id: Int){
+    fun Bundle(id: Int) {
 
         val Bundle = Bundle()
         Bundle.putInt("dilID", id)
@@ -182,22 +188,16 @@ class ListelerimFragment : Fragment() {
 
         fabNew.setOnClickListener {
 
-            Log.e("DİlByKullaniciID = ", ""+id)
+            Log.e("DİlByKullaniciID = ", "" + id)
 
 
-            requireFragmentManager().beginTransaction().replace(R.id.fragmentTutucu, yeniKelimeFragment).addToBackStack(null).commit()
+            requireFragmentManager().beginTransaction()
+                .replace(R.id.fragmentTutucu, yeniKelimeFragment).addToBackStack(null).commit()
 
         }
 
 
     }
-
-
-
-
-
-
-
 
 
 }

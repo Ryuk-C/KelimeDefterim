@@ -12,10 +12,10 @@ import com.example.haznedar.kelimedefterim.Database.Diller
 import com.example.haznedar.kelimedefterim.R
 import com.squareup.picasso.Picasso
 
-class dilAdapter(
+class akademiDilAdapter(
     private val dillerListesi: java.util.ArrayList<Diller>,
-    private val listener: dilAdapter.OnItemClickListener
-) : RecyclerView.Adapter<dilAdapter.dilKartiTasarimTutucu>() {
+    private val listener: akademiDilAdapter.OnItemClickListener
+) : RecyclerView.Adapter<akademiDilAdapter.akademiDilKartiTasarimTutucu>() {
 
 
     interface OnItemClickListener {
@@ -25,7 +25,7 @@ class dilAdapter(
     }
 
 
-    inner class dilKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
+    inner class akademiDilKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
 
         var satirCardView: CardView
         var dil: TextView
@@ -33,19 +33,23 @@ class dilAdapter(
 
 
         init {
-            satirCardView = view.findViewById(R.id.cardViewDil)
-            dil = view.findViewById(R.id.tvDil)
-            dilResim = view.findViewById(R.id.ivdilBayrak)
+            satirCardView = view.findViewById(R.id.cardViewAkademiDil)
+            dil = view.findViewById(R.id.tvAkademiDilAd)
+            dilResim = view.findViewById(R.id.ivAkademiDilBayrak)
+
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): dilKartiTasarimTutucu {
-        val tasarim =
-            LayoutInflater.from(parent.context).inflate(R.layout.card_dil_tasarim, parent, false)
-        return dilKartiTasarimTutucu(tasarim)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): akademiDilKartiTasarimTutucu {
+        val tasarim = LayoutInflater.from(parent.context)
+            .inflate(R.layout.card_akademi_dil_tasarim, parent, false)
+        return akademiDilKartiTasarimTutucu(tasarim)
     }
 
-    override fun onBindViewHolder(holder: dilKartiTasarimTutucu, position: Int) {
+    override fun onBindViewHolder(holder: akademiDilKartiTasarimTutucu, position: Int) {
 
         val veri = dillerListesi.get(position)
 
@@ -60,7 +64,6 @@ class dilAdapter(
             Log.e("Seçili Dil İD:", veri.dil_id.toString())
 
             listener.OnItemClicked(veri.dil_id)
-
 
         }
     }

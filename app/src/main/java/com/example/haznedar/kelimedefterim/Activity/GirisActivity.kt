@@ -48,7 +48,7 @@ class GirisActivity : AppCompatActivity() {
 
 
         kdi.kullaniciAra(Pst_EMail, Pst_Sifre).enqueue(object :
-                Callback<CRUDCevap> {
+            Callback<CRUDCevap> {
             override fun onResponse(call: Call<CRUDCevap>, response: Response<CRUDCevap>) {
 
                 if (response.body()?.success == 1) {
@@ -65,17 +65,17 @@ class GirisActivity : AppCompatActivity() {
                     finish()
 
                     FancyToast.makeText(
-                            this@GirisActivity, "Giriş İşlemi Başarılı!",
-                            FancyToast.LENGTH_LONG,
-                            FancyToast.SUCCESS, false
+                        this@GirisActivity, "Giriş İşlemi Başarılı!",
+                        FancyToast.LENGTH_LONG,
+                        FancyToast.SUCCESS, false
                     ).show()
                 }
 
                 if (response.body()?.success == 0) {
                     FancyToast.makeText(
-                            this@GirisActivity, "Giriş İşlemi Başarısız!",
-                            FancyToast.LENGTH_LONG,
-                            FancyToast.ERROR, false
+                        this@GirisActivity, "Giriş İşlemi Başarısız!",
+                        FancyToast.LENGTH_LONG,
+                        FancyToast.ERROR, false
                     ).show()
                 }
             }

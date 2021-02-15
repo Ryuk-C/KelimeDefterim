@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.haznedar.kelimedefterim.Database.Kelimeler
 import com.example.haznedar.kelimedefterim.R
 
-class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimeler>)
-    : RecyclerView.Adapter<kelimelerAdapter.kelimeKartiTasarimTutucu>() {
+class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimeler>) :
+    RecyclerView.Adapter<kelimelerAdapter.kelimeKartiTasarimTutucu>() {
 
     inner class kelimeKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -18,25 +18,29 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
         var anaKelime: TextView
         var kelimeKarsilik: TextView
 
+
         init {
             satirCardView = view.findViewById(R.id.cardViewListe)
             anaKelime = view.findViewById(R.id.tvAnaKelime)
             kelimeKarsilik = view.findViewById(R.id.tvkelimeKarsilik)
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): kelimeKartiTasarimTutucu {
 
 
-        if (kelimelerListesi.size <1){
+        if (kelimelerListesi.size < 1) {
 
-            val tasarim = LayoutInflater.from(parent.context).inflate(R.layout.wordblank, parent, false)
+            val tasarim =
+                LayoutInflater.from(parent.context).inflate(R.layout.wordblank, parent, false)
             return kelimeKartiTasarimTutucu(tasarim)
 
 
-        }else{
+        } else {
 
-            val tasarim = LayoutInflater.from(parent.context).inflate(R.layout.card_liste_tasarim, parent, false)
+            val tasarim = LayoutInflater.from(parent.context)
+                .inflate(R.layout.card_liste_tasarim, parent, false)
             return kelimeKartiTasarimTutucu(tasarim)
         }
 
@@ -50,8 +54,6 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
         holder.kelimeKarsilik.text = veri.kelime_karsilik
 
         holder.satirCardView.setOnClickListener {
-
-
 
         }
     }

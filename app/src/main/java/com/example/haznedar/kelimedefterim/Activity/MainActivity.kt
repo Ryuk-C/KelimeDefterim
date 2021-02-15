@@ -2,7 +2,6 @@ package com.example.haznedar.kelimedefterim.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.Navigation
 import com.example.haznedar.kelimedefterim.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,26 +18,26 @@ class MainActivity : AppCompatActivity() {
     fun buttomBar() {
 
         supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentTutucu, ListelerimFragment()).commit()
+            .add(R.id.fragmentTutucu, ListelerimFragment()).commit()
 
         buttomBar1.setOnNavigationItemSelectedListener { menuItem ->
 
             if (menuItem.itemId == R.id.listelerim_bnb) {
 
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentTutucu, ListelerimFragment()).commit()
+                    .replace(R.id.fragmentTutucu, ListelerimFragment()).commit()
             }
 
             if (menuItem.itemId == R.id.akademi_bnb) {
 
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentTutucu, AkademiFragment()).commit()
+                    .replace(R.id.fragmentTutucu, AkademiFragment()).commit()
             }
 
             if (menuItem.itemId == R.id.hesabim_bnb) {
 
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentTutucu, HesabimFragment()).commit()
+                    .replace(R.id.fragmentTutucu, HesabimFragment()).commit()
             }
             true
         }

@@ -10,10 +10,14 @@ import androidx.fragment.app.Fragment
 import com.example.haznedar.kelimedefterim.R
 import kotlinx.android.synthetic.main.hesabim_layout.*
 
-class HesabimFragment:Fragment() {
+class HesabimFragment : Fragment() {
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val inflat2 = inflater.inflate(R.layout.hesabim_layout, container, false)
 
@@ -28,7 +32,7 @@ class HesabimFragment:Fragment() {
 
     }
 
-    fun btnCikisYap(){
+    fun btnCikisYap() {
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
 
@@ -42,9 +46,7 @@ class HesabimFragment:Fragment() {
             editor?.remove("kullaniciSifre")
             editor?.commit()
 
-
         }
-
 
 
     }

@@ -33,7 +33,6 @@ class KayitActivity : AppCompatActivity() {
     }
 
 
-
     fun uyelikBaslat() {
 
         kdi = ApiUtils.getKelimelerDaoInterface()
@@ -47,15 +46,15 @@ class KayitActivity : AppCompatActivity() {
             if (etuyeliksifre.text.toString() != etuyeliksifre2.text.toString()) {
 
                 FancyToast.makeText(
-                        this@KayitActivity,
-                        "Şifreler Uyuşmamaktadır!",
-                        FancyToast.LENGTH_LONG,
-                        FancyToast.WARNING,
-                        true
+                    this@KayitActivity,
+                    "Şifreler Uyuşmamaktadır!",
+                    FancyToast.LENGTH_LONG,
+                    FancyToast.WARNING,
+                    true
                 ).show()
             } else {
                 kdi.kullaniciEkle(Pst_EMail, Pst_Sifre).enqueue(object :
-                        Callback<CRUDCevap> {
+                    Callback<CRUDCevap> {
                     override fun onResponse(call: Call<CRUDCevap>, response: Response<CRUDCevap>) {
 
                     }
@@ -65,9 +64,9 @@ class KayitActivity : AppCompatActivity() {
                 })
 
                 FancyToast.makeText(
-                        this@KayitActivity, "Üyelik İşlemi Başarılı!",
-                        FancyToast.LENGTH_LONG,
-                        FancyToast.SUCCESS, true
+                    this@KayitActivity, "Üyelik İşlemi Başarılı!",
+                    FancyToast.LENGTH_LONG,
+                    FancyToast.SUCCESS, true
                 ).show()
 
                 val intent = Intent(this@KayitActivity, GirisActivity::class.java)
@@ -75,9 +74,9 @@ class KayitActivity : AppCompatActivity() {
             }
         } else {
             FancyToast.makeText(
-                    this@KayitActivity, "Lütfen boş değer bırakmayınız!",
-                    FancyToast.LENGTH_LONG,
-                    FancyToast.ERROR, false
+                this@KayitActivity, "Lütfen boş değer bırakmayınız!",
+                FancyToast.LENGTH_LONG,
+                FancyToast.ERROR, false
             ).show()
         }
     }
