@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewListe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_2sdp"
         android:layout_marginEnd="@dimen/_2sdp"
-        app:cardCornerRadius="@dimen/_25sdp"
-        app:strokeColor="#2196F3"
-        app:strokeWidth="1dp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:checkable="true"
         android:clickable="true"
         android:focusable="true"
-        android:checkable="true">
+        app:cardCornerRadius="@dimen/_25sdp"
+        app:strokeColor="#2196F3"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,10 +43,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:text="Karşılık"
                 android:textSize="15sp"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAnaKelime" />

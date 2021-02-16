@@ -33,10 +33,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
                 android:background="@drawable/layout_background"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -45,7 +45,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="@dimen/_160sdp"
                     android:layout_height="@dimen/_110sdp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     app:srcCompat="@drawable/icoon" />
 
                 <LinearLayout
@@ -61,10 +61,10 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="@dimen/_10sdp"
                         android:hint="E-Mail"
                         android:inputType="text"
-                        android:padding="20dp"
+                        android:padding="@dimen/_10sdp"
                         android:textColorHint="#606060"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -74,13 +74,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="@dimen/_10sdp"
                         android:hint="Şifre"
                         android:inputType="textPassword"
-                        android:padding="20dp"
+                        android:padding="@dimen/_10sdp"
                         android:textColorHint="#606060"
                         android:textSize="18sp"
                         android:textStyle="bold" />

@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
     >
+>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,12 +42,12 @@
             android:id="@+id/rvKelimeler"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_475sdp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvDil"/>
+            app:layout_constraintTop_toBottomOf="@+id/rvDil" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabNew"
@@ -59,6 +60,7 @@
             app:tint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/rvKelimeler"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:focusable="true" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

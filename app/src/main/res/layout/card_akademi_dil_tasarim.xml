@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewAkademiDil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_25sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginRight="@dimen/_15sdp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@drawable/stroke_color1"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:checkable="true"
         android:clickable="true"
         android:focusable="true"
-        android:checkable="true">
-
+        app:cardCornerRadius="@dimen/_25sdp"
+        app:strokeColor="@drawable/stroke_color1"
+        app:strokeWidth="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,11 +45,11 @@
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="5dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <View
@@ -104,7 +104,6 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvToplamKelime" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

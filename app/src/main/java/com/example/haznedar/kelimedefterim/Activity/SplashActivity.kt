@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.View
 import com.example.haznedar.kelimedefterim.Database.CRUDCevap
 import com.example.haznedar.kelimedefterim.Database.KelimelerDaoInterface
@@ -30,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onResume() {
         object : CountDownTimer(1600, 500) {
             override fun onFinish() {
-                progressBar2.visibility= View.VISIBLE
+                progressBar2.visibility = View.VISIBLE
 
                 val sp = getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
 
@@ -46,8 +45,6 @@ class SplashActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<CRUDCevap>, response: Response<CRUDCevap>) {
 
                         if (response.body()?.success == 1) {
-
-                            Log.e("Kullanıcı", response.body()!!.kullaniciid)
 
                             val intent = Intent(this@SplashActivity, MainActivity::class.java)
                             startActivity(intent)
@@ -69,7 +66,7 @@ class SplashActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<CRUDCevap>, t: Throwable) {
-                        progressBar2.visibility= View.INVISIBLE
+                        progressBar2.visibility = View.INVISIBLE
                     }
                 })
 

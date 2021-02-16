@@ -1,6 +1,5 @@
 package com.example.haznedar.kelimedefterim.Adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,10 +56,7 @@ class dilAdapter(
 
         holder.satirCardView.setOnClickListener {
 
-            Log.e("Seçili Dil İD:", veri.dil_id.toString())
-
             listener.OnItemClicked(veri.dil_id)
-
 
         }
     }
@@ -74,5 +70,4 @@ class dilAdapter(
         dillerListesi.addAll(newList)
         notifyDataSetChanged()
     }
-
 }

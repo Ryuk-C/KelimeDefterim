@@ -38,6 +38,7 @@ class akademiDilAdapter(
             dilResim = view.findViewById(R.id.ivAkademiDilBayrak)
 
         }
+
     }
 
     override fun onCreateViewHolder(
@@ -55,15 +56,16 @@ class akademiDilAdapter(
 
         holder.dil.text = veri.dil_isim
 
+
         val url = "http://haznedar.de/Haznedar/KelimeDefterim/Resimler/Bayraklar/${veri.dil_resim}"
 
         Picasso.get().load(url).into(holder.dilResim)
 
+
         holder.satirCardView.setOnClickListener {
 
-            Log.e("Seçili Dil İD:", veri.dil_id.toString())
-
             listener.OnItemClicked(veri.dil_id)
+            Log.e("Seçili Dil : İD", veri.dil_id.toString())
 
         }
     }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.haznedar.kelimedefterim.Database.Kelimeler
@@ -17,13 +18,14 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
         var satirCardView: CardView
         var anaKelime: TextView
         var kelimeKarsilik: TextView
+        var toplamKelime: TextView?
 
 
         init {
             satirCardView = view.findViewById(R.id.cardViewListe)
             anaKelime = view.findViewById(R.id.tvAnaKelime)
             kelimeKarsilik = view.findViewById(R.id.tvkelimeKarsilik)
-
+            toplamKelime = view.findViewById(R.id.tvToplamKelime)
         }
     }
 
@@ -36,14 +38,12 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
                 LayoutInflater.from(parent.context).inflate(R.layout.wordblank, parent, false)
             return kelimeKartiTasarimTutucu(tasarim)
 
-
         } else {
 
             val tasarim = LayoutInflater.from(parent.context)
                 .inflate(R.layout.card_liste_tasarim, parent, false)
             return kelimeKartiTasarimTutucu(tasarim)
         }
-
     }
 
     override fun onBindViewHolder(holder: kelimeKartiTasarimTutucu, position: Int) {
@@ -52,8 +52,18 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
 
         holder.anaKelime.text = veri.ana_kelime
         holder.kelimeKarsilik.text = veri.kelime_karsilik
+        holder.toplamKelime?.text = kelimelerListesi.size.toString()
 
         holder.satirCardView.setOnClickListener {
+
+            val mDialogView = LayoutInflater.from(holder.itemView.context)
+                .inflate(R.layout.kelimeler_dialog_fragment, null)
+            val mBuilder = AlertDialog.Builder(holder.itemView.context)
+                .setView(mDialogView).show()
+
+            mDialogView.findViewById<TextView>(R.id.dfAnaKelime).text = veri.ana_kelime
+            mDialogView.findViewById<TextView>(R.id.dfKarsilik).text = veri.kelime_karsilik
+            mDialogView.findViewById<TextView>(R.id.dfCumle).text = veri.cumle
 
         }
     }
@@ -68,4 +78,5 @@ class kelimelerAdapter(private val kelimelerListesi: java.util.ArrayList<Kelimel
         kelimelerListesi.addAll(newList)
         notifyDataSetChanged()
     }
+
 }

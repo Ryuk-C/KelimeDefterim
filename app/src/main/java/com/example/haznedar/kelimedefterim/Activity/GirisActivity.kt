@@ -28,12 +28,14 @@ class GirisActivity : AppCompatActivity() {
         btnKayitOlSayfasi.setOnClickListener {
             val intent = Intent(this, KayitActivity::class.java)
             startActivity(intent)
-
         }
+
 
         btnUyeGiris.setOnClickListener {
             girisYap()
         }
+
+
     }
 
     fun girisYap() {

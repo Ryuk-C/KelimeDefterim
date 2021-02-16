@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/yeniKelimeEkleGeriBtn"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_10sdp">
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
@@ -18,6 +18,18 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/hello">
+    </com.airbnb.lottie.LottieAnimationView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_125sdp"
+        app:layout_constraintBottom_toTopOf="@+id/etYeniKelime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/man">
 
     </com.airbnb.lottie.LottieAnimationView>
 
@@ -27,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Örnek Cümle"
+        android:hint="Örnek Cümle (Opsiyonel)"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,13 +81,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_check_black_24dp"
         app:tint="#FFFFFF" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvYeniKelime"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_125sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

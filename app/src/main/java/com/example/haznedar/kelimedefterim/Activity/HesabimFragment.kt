@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.hesabim_layout.*
 
 class HesabimFragment : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

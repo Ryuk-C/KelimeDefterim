@@ -7,7 +7,13 @@ data class KelimelerCevap(@SerializedName("KelimelerJSON")
                           @Expose
                           var kelimeler: List<Kelimeler>,
 
+                          @SerializedName("useraktifdil")
+                          @Expose
+                          var useraktifdil: Int,
+
                           @SerializedName("success")
                           @Expose
-                          var success: Int) {
+                          var success: Int
+
+                          ) {
 }
