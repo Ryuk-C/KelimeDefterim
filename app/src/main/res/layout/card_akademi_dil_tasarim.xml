@@ -19,7 +19,7 @@
         android:clickable="true"
         android:focusable="true"
         app:cardCornerRadius="@dimen/_25sdp"
-        app:strokeColor="@drawable/stroke_color1"
+        app:strokeColor="#32BAF8"
         app:strokeWidth="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

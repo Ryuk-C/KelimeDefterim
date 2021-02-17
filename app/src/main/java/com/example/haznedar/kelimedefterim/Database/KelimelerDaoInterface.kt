@@ -10,8 +10,10 @@ interface KelimelerDaoInterface {
     @POST("Haznedar/KelimeDefterim/KelimeListele.php")
     @FormUrlEncoded
     fun tumKelimeler(
-        @Field("Pst_Kullanici_Dil_ID") Pst_Dil_ID: Int
-    ): Call<KelimelerCevap>
+        @Field("Pst_Kullanici_Dil_ID") Pst_Dil_ID: Int,
+        @Field("Pst_User_ID") Pst_User_ID: Int
+
+        ): Call<KelimelerCevap>
 
     @POST("Haznedar/KelimeDefterim/DilListele.php")
     @FormUrlEncoded
@@ -45,5 +47,11 @@ interface KelimelerDaoInterface {
         @Field("Pst_Kelime") Pst_Kelime: String,
         @Field("Pst_Karsilik") Pst_Karsilik: String,
         @Field("Pst_Cumle") Pst_Cumle: String
+    ): Call<CRUDCevap>
+
+    @POST("Haznedar/KelimeDefterim/delete_kelimeler.php")
+    @FormUrlEncoded
+    fun kelimeSil(
+        @Field("Pst_Kelime_ID") Pst_Kelime_ID: Int,
     ): Call<CRUDCevap>
 }
