@@ -2,10 +2,10 @@ package com.example.haznedar.kelimedefterim.Activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.haznedar.kelimedefterim.Database.CRUDCevap
 import com.example.haznedar.kelimedefterim.Database.KelimelerDaoInterface
 import com.example.haznedar.kelimedefterim.R

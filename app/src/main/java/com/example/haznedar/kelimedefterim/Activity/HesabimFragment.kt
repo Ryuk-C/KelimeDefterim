@@ -46,9 +46,5 @@ class HesabimFragment : Fragment() {
             editor?.commit()
 
         }
-
-
     }
-
-
 }

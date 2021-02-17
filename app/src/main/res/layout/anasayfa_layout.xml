@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
     >
->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +26,7 @@
             app:menu="@menu/toolbar_menu"
             app:title="Kelime Defterim"
             app:titleTextColor="@color/white"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDil"
@@ -36,7 +35,7 @@
             android:layout_marginTop="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvKelimeler"
@@ -57,10 +56,10 @@
             android:layout_marginBottom="24dp"
             android:backgroundTint="#3498DB"
             android:clickable="true"
-            app:tint="#FFFFFF"
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="@+id/rvKelimeler"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@android:drawable/ic_input_add"
-            android:focusable="true" />
+            app:tint="#FFFFFF" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

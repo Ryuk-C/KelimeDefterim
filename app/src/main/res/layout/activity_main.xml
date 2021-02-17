@@ -10,10 +10,10 @@
         android:id="@+id/buttomBar1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_menu" />
 
     <FrameLayout

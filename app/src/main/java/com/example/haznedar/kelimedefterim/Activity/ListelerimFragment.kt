@@ -4,64 +4,66 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.haznedar.kelimedefterim.Adapter.dilAdapter
+import com.example.haznedar.kelimedefterim.Adapter.dilAdapter2
 import com.example.haznedar.kelimedefterim.Adapter.kelimelerAdapter
 import com.example.haznedar.kelimedefterim.Database.*
 import com.example.haznedar.kelimedefterim.R
+import com.example.haznedar.kelimedefterim.interfacee.DilSecInterface
 import com.example.haznedar.szlk.ApiUtils
 import kotlinx.android.synthetic.main.anasayfa_layout.*
+import kotlinx.android.synthetic.main.anasayfa_layout.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.view.MenuInflater
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.anasayfa_layout.view.*
 
-
-class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
+class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInterface {
 
     private lateinit var urunlerListe: ArrayList<Kelimeler>
     private lateinit var dillerListe: ArrayList<Diller>
-    private var adapter1 = kelimelerAdapter(arrayListOf())
+    private var kelimelerAdapter = kelimelerAdapter(arrayListOf())
     private lateinit var adapter2: dilAdapter
+
+    var dilAdapterYeni =  dilAdapter2(arrayListOf(),this@ListelerimFragment as DilSecInterface)
+
     private lateinit var kdi: KelimelerDaoInterface
     private var selectedPosition = -1
+    private var kullaniciByDilID = ""
+   // private var kullaniciByDilID by Delegates.notNull<Int>()
+
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         val inflat1 = inflater.inflate(R.layout.anasayfa_layout, container, false)
         (activity as AppCompatActivity).setSupportActionBar(inflat1.toolbar)
 
         return inflat1
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+       /*
         adapter2 = dilAdapter(arrayListOf(), object : dilAdapter.OnItemClickListener {
             override fun OnItemClicked(id: Int) {
 
-
-                kelimeListele(id)
+                kullaniciByDilID = id
                 Bundle(id)
+                kelimeListele(id)
             }
-        })
+        })*/
 
-        rvDil.layoutManager =
-            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-        rvDil.adapter = adapter2
+        rvDil.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        rvDil.adapter = dilAdapterYeni
 
         rvKelimeler.layoutManager = LinearLayoutManager(this.context)
-        rvKelimeler.adapter = adapter1
-
+        rvKelimeler.adapter = kelimelerAdapter
 
         kdi = ApiUtils.getKelimelerDaoInterface()
 
@@ -69,9 +71,9 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
     }
 
-    fun kelimeListele(id: Int) {
+    fun kelimeListele(id: String) {
 
-        kdi.tumKelimeler(id).enqueue(object : Callback<KelimelerCevap> {
+        kdi.tumKelimeler(id.toInt()).enqueue(object : Callback<KelimelerCevap> {
 
             override fun onResponse(
                 call: Call<KelimelerCevap>?,
@@ -80,18 +82,17 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
                 if (response != null) {
 
-
                     val liste = response.body()?.kelimeler
 
                     if (liste != null) {
 
-                        adapter1.update(liste as java.util.ArrayList<Kelimeler>)
+                        kelimelerAdapter.update(liste as java.util.ArrayList<Kelimeler>)
 
                     }
 
                 } else {
                     val liste = response?.body()?.kelimeler
-                    adapter1.update(liste as java.util.ArrayList<Kelimeler>)
+                    kelimelerAdapter.update(liste as java.util.ArrayList<Kelimeler>)
 
                 }
             }
@@ -119,7 +120,8 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
                     if (liste != null) {
 
-                        adapter2.update(liste as java.util.ArrayList<Diller>)
+                        dilAdapterYeni.update(liste as java.util.ArrayList<Diller>)
+                       // adapter2.update(liste as java.util.ArrayList<Diller>)
 
                     }
                 }
@@ -133,7 +135,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -167,7 +169,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    fun aramaYap(arananDeger: String, kullaniciDILID: Int){
+    fun aramaYap(arananDeger: String, kullaniciDILID: Int) {
 
         kdi.kelimeAra(arananDeger, kullaniciDILID).enqueue(object : Callback<KelimelerCevap> {
 
@@ -182,7 +184,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
                     if (liste != null) {
 
-                        adapter1.update(liste as java.util.ArrayList<Kelimeler>)
+                        kelimelerAdapter.update(liste as java.util.ArrayList<Kelimeler>)
                     }
                 }
             }
@@ -194,16 +196,24 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
-        if (query != null) {
-            Log.e("onQueryTextSubmit", query)
-        }
+        Log.e("onQueryTextSubmit", query)
+
+        aramaYap(query, kullaniciByDilID.toInt())
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
             Log.e("onQueryTextChange", newText)
+            aramaYap(newText, kullaniciByDilID.toInt())
         }
-        return false
+        return true
+    }
+
+    override fun dilSec(dilID: String) {
+
+        kullaniciByDilID = dilID
+        kelimeListele(dilID)
+        Bundle(dilID.toInt())
     }
 }

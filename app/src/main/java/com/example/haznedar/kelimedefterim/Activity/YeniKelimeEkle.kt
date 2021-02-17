@@ -1,14 +1,12 @@
 package com.example.haznedar.kelimedefterim.Activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.haznedar.kelimedefterim.Adapter.dilAdapter
-import com.example.haznedar.kelimedefterim.Adapter.kelimelerAdapter
-import com.example.haznedar.kelimedefterim.Database.*
+import com.example.haznedar.kelimedefterim.Database.CRUDCevap
+import com.example.haznedar.kelimedefterim.Database.KelimelerDaoInterface
 import com.example.haznedar.kelimedefterim.R
 import com.example.haznedar.szlk.ApiUtils
 import com.shashank.sony.fancytoastlib.FancyToast

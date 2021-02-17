@@ -9,19 +9,14 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.haznedar.kelimedefterim.Database.Diller
 import com.example.haznedar.kelimedefterim.R
+import com.example.haznedar.kelimedefterim.interfacee.DilSecInterface
 import com.squareup.picasso.Picasso
 
-class dilAdapter(
+class dilAdapter2(
     private val dillerListesi: java.util.ArrayList<Diller>,
-    private val listener: dilAdapter.OnItemClickListener
-) : RecyclerView.Adapter<dilAdapter.dilKartiTasarimTutucu>() {
+    private val dilSecInterface: DilSecInterface
+) : RecyclerView.Adapter<dilAdapter2.dilKartiTasarimTutucu>() {
 
-
-    interface OnItemClickListener {
-
-        fun OnItemClicked(id: Int)
-
-    }
 
     inner class dilKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -29,12 +24,12 @@ class dilAdapter(
         var dil: TextView
         var dilResim: ImageView
 
+
         init {
             satirCardView = view.findViewById(R.id.cardViewDil)
             dil = view.findViewById(R.id.tvDil)
             dilResim = view.findViewById(R.id.ivdilBayrak)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): dilKartiTasarimTutucu {
@@ -55,7 +50,7 @@ class dilAdapter(
 
         holder.satirCardView.setOnClickListener {
 
-            listener.OnItemClicked(veri.dil_id)
+            dilSecInterface.dilSec(veri.dil_id.toString())
 
         }
     }

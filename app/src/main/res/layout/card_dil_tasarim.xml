@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_2sdp"
@@ -11,15 +10,15 @@
         android:id="@+id/cardViewDil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_2sdp"
         android:layout_marginTop="@dimen/_2sdp"
         android:layout_marginEnd="@dimen/_2sdp"
         android:layout_marginRight="@dimen/_2sdp"
-        android:layout_marginLeft="@dimen/_2sdp"
-        app:cardCornerRadius="@dimen/_25sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:checkable="true"
         android:clickable="true"
         android:focusable="true"
-        android:checkable="true">
+        app:cardCornerRadius="@dimen/_25sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

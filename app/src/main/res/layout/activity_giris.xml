@@ -85,7 +85,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    */
+
 
                     <TextView
                         android:id="@+id/tvSifremiUnuttum"
