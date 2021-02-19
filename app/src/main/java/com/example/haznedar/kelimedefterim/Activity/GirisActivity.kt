@@ -33,7 +33,6 @@ class GirisActivity : AppCompatActivity() {
             girisYap()
         }
 
-
     }
 
     fun girisYap() {
@@ -58,7 +57,6 @@ class GirisActivity : AppCompatActivity() {
                     editor.putString("kullaniciSifre", Pst_Sifre)
                     editor.putString("kullanici_id", response.body()!!.kullaniciid)
                     editor.commit()
-
 
                     val intent = Intent(this@GirisActivity, MainActivity::class.java)
                     startActivity(intent)

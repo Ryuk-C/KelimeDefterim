@@ -4,13 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Button
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.haznedar.kelimedefterim.Adapter.dilAdapter2
+import com.example.haznedar.kelimedefterim.Adapter.dilAdapter
 import com.example.haznedar.kelimedefterim.Adapter.kelimelerAdapter
 import com.example.haznedar.kelimedefterim.Database.*
 import com.example.haznedar.kelimedefterim.R
@@ -29,12 +27,13 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
 
     private lateinit var urunlerListe: ArrayList<Kelimeler>
     private lateinit var dillerListe: ArrayList<Diller>
-    var kelimeAdapterYeni = kelimelerAdapter(arrayListOf(), this@ListelerimFragment as KelimeSecInterface)
-    var dilAdapterYeni = dilAdapter2(arrayListOf(), this@ListelerimFragment as DilSecInterface)
+
+    var kelimeAdapterYeni =
+        kelimelerAdapter(arrayListOf(), this@ListelerimFragment as KelimeSecInterface)
+    var dilAdapterYeni = dilAdapter(arrayListOf(), this@ListelerimFragment as DilSecInterface)
     private lateinit var kdi: KelimelerDaoInterface
     private var kullaniciByDilID = ""
     private var kelimeByID = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,6 +42,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
         val inflat1 = inflater.inflate(R.layout.anasayfa_layout, container, false)
         (activity as AppCompatActivity).setSupportActionBar(inflat1.toolbar)
         return inflat1
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,13 +57,22 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
 
         kdi = ApiUtils.getKelimelerDaoInterface()
 
+        Log.e("DilID", kullaniciByDilID)
+
+        val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
+        val ogkid = sp?.getString("kullanici_id", "").toString()
+
+
         dilListele()
+        kelimeListele(kullaniciByDilID, ogkid)
 
     }
 
-    fun kelimeListele(id: String, user_ID:Int) {
+    fun kelimeListele(id: String, user_ID: String) {
 
-        kdi.tumKelimeler(id.toInt(), user_ID).enqueue(object : Callback<KelimelerCevap> {
+        kdi = ApiUtils.getKelimelerDaoInterface()
+
+        kdi.tumKelimeler(id, user_ID).enqueue(object : Callback<KelimelerCevap> {
 
             override fun onResponse(
                 call: Call<KelimelerCevap>?,
@@ -139,6 +148,27 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
 
             }
         })
+    }
+
+    fun kelimeGuncelle(kelimeID: Int, kelime: String, kelimeKarsilik: String, ornekCumle: String?) {
+
+        kdi = ApiUtils.getKelimelerDaoInterface()
+
+        kdi.kelimeGuncelle(kelimeID, kelime, kelimeKarsilik, ornekCumle)
+            .enqueue(object : Callback<CRUDCevap> {
+
+                override fun onResponse(
+                    call: Call<CRUDCevap>?,
+                    response: Response<CRUDCevap>?
+                ) {
+
+                }
+
+                override fun onFailure(call: Call<CRUDCevap>?, t: Throwable?) {
+
+
+                }
+            })
     }
 
     fun aramaYap(arananDeger: String, kullaniciDILID: Int) {
@@ -221,11 +251,12 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
     override fun dilSec(dilID: String) {
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
-        val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
+        val ogkid = sp?.getString("kullanici_id", "").toString()
 
         kullaniciByDilID = dilID
-        kelimeListele(dilID,ogkid.toInt())
         Bundle(dilID.toInt())
+
+        kelimeListele(kullaniciByDilID, ogkid)
     }
 
     override fun kelimeSec(kelimeID: Int) {
