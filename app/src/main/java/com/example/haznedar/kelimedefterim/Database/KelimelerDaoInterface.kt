@@ -62,4 +62,5 @@ interface KelimelerDaoInterface {
         @Field("Pst_Karsilik") Pst_Karsilik: String,
         @Field("Pst_Cumle") Pst_Cumle: String?
     ): Call<CRUDCevap>
+
 }

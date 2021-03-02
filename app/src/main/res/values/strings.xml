@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Kelime Defterim</string>
+    <string name="_1_dil_kelime">1. Dil Kelime</string>
+    <string name="kar_l_k">Karşılık</string>
 </resources>

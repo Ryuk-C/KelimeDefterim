@@ -31,8 +31,8 @@ class GirisActivity : AppCompatActivity() {
 
         btnUyeGiris.setOnClickListener {
             girisYap()
-        }
 
+        }
     }
 
     fun girisYap() {

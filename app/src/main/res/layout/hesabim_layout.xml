@@ -12,12 +12,12 @@
             android:id="@+id/btnCikisYap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="25dp"
             android:text="Çıkış Yap"
             android:textColor="#E91E63"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 </LinearLayout>

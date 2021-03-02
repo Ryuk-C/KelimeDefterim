@@ -78,6 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_check_black_24dp"
-        app:tint="#FFFFFF" />
+        app:tint="#FFFFFF"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

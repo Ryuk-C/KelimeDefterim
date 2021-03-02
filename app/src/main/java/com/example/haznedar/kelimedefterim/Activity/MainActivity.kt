@@ -2,6 +2,7 @@ package com.example.haznedar.kelimedefterim.Activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.haznedar.kelimedefterim.R
 import kotlinx.android.synthetic.main.activity_main.*
 

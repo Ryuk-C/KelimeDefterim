@@ -36,7 +36,9 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
     private var kelimeByID = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         val inflat1 = inflater.inflate(R.layout.anasayfa_layout, container, false)
@@ -107,7 +109,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
 
-
         kdi.tumDiller(ogkid).enqueue(object : Callback<DillerCevap> {
 
             override fun onResponse(call: Call<DillerCevap>?, response: Response<DillerCevap>?) {
@@ -165,7 +166,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
                 }
 
                 override fun onFailure(call: Call<CRUDCevap>?, t: Throwable?) {
-
 
                 }
             })

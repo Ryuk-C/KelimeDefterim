@@ -11,6 +11,7 @@ class ApiUtils {
 
         fun getKelimelerDaoInterface(): KelimelerDaoInterface {
             return RetrofitClient.getClient(BASE_URL).create(KelimelerDaoInterface::class.java)
+
         }
     }
 }
