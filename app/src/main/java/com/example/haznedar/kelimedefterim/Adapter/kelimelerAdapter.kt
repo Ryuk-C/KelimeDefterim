@@ -99,7 +99,7 @@ class kelimelerAdapter(
                 mBuilder1.window?.setGravity(Gravity.BOTTOM)
                 mBuilder1.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 mDialogView1.findViewById<TextView>(R.id.silinecekAnaKelime).text =
-                    veri.ana_kelime + " kelimesi silinecektir!"
+                veri.ana_kelime + " kelimesi silinecektir!"
 
                 mDialogView1.btnKelimeSil.setOnClickListener {
 

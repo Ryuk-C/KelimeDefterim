@@ -3,17 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <item
         android:id="@+id/action_ara"
         android:icon="@drawable/search"
-        android:title="Ara"
+        android:title="@string/ara"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView" />
 
 
     <item
         android:id="@+id/yeni_liste"
-        android:title="Yeni Liste Oluştur" />
+        android:title="@string/yeni_liste_olu_tur" />
+
+    <item
+        android:id="@+id/tvkelimeleri_sirala"
+        android:title="@string/kelimeleri_s_rala"
+        />
 
 </menu>

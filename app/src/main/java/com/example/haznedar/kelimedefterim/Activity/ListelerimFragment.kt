@@ -1,9 +1,12 @@
 package com.example.haznedar.kelimedefterim.Activity
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -28,8 +31,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
     private lateinit var urunlerListe: ArrayList<Kelimeler>
     private lateinit var dillerListe: ArrayList<Diller>
 
-    var kelimeAdapterYeni =
-        kelimelerAdapter(arrayListOf(), this@ListelerimFragment as KelimeSecInterface)
+    var kelimeAdapterYeni = kelimelerAdapter(arrayListOf(), this@ListelerimFragment as KelimeSecInterface)
     var dilAdapterYeni = dilAdapter(arrayListOf(), this@ListelerimFragment as DilSecInterface)
     private lateinit var kdi: KelimelerDaoInterface
     private var kullaniciByDilID = ""
@@ -57,9 +59,9 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
         rvKelimeler.layoutManager = LinearLayoutManager(this.context)
         rvKelimeler.adapter = kelimeAdapterYeni
 
+
         kdi = ApiUtils.getKelimelerDaoInterface()
 
-        Log.e("DilID", kullaniciByDilID)
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "").toString()
@@ -102,6 +104,13 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
 
             }
         })
+    }
+
+    fun eklenmemisDilListele(){
+        val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
+        val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
+
+        kdi.eklenmemisDilListele(ogkid)
     }
 
     fun dilListele() {
@@ -226,6 +235,24 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+
+            R.id.yeni_liste ->{
+
+               Log.e("Yeni Dil Ekle", "Yeni Dil Ekleme Butonuna basildi")
+
+                val mDialogView1 = LayoutInflater.from(requireContext())
+                    .inflate(R.layout.dialog_yeni_dil, null)
+                val mBuilder1 = AlertDialog.Builder(requireContext())
+                    .setView(mDialogView1)
+                    .show()
+
+                mBuilder1.window?.setGravity(Gravity.CENTER)
+                mBuilder1.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+
+                true
+            }
+
             R.id.action_ara -> {
                 true
             }
@@ -262,5 +289,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener, DilSecInt
     override fun kelimeSec(kelimeID: Int) {
 
         kelimeByID = kelimeID
+
     }
+
 }

@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        object : CountDownTimer(1600, 500) {
+        object : CountDownTimer(1750, 500) {
             override fun onFinish() {
                 progressBar2.visibility = View.VISIBLE
 

@@ -17,7 +17,7 @@
         android:layout_marginBottom="@dimen/_2sdp"
         android:checkable="true"
         app:cardCornerRadius="@dimen/_15sdp"
-        app:strokeColor="#2196F3"
+        app:strokeColor="#216afc"
         app:strokeWidth="1dp"
         android:focusable="true">
 
@@ -33,7 +33,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/_1_dil_kelime"
-                android:textColor="#2196F3"
+                android:textColor="#216afc"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +49,7 @@
                 android:text="@string/kar_l_k"
                 android:textSize="15sp"
                 android:textStyle="italic"
+                android:textColor="#808080"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAnaKelime" />

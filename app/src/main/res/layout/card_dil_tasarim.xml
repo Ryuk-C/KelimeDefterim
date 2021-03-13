@@ -40,7 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_gravity="center"
-                android:text="İngilizce">
+                android:text="İngilizce"
+                android:textColor="#808080"
+                >
             </TextView>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

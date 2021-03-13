@@ -63,4 +63,10 @@ interface KelimelerDaoInterface {
         @Field("Pst_Cumle") Pst_Cumle: String?
     ): Call<CRUDCevap>
 
+    @POST("Haznedar/KelimeDefterim/EklenmemisDilListele.php")
+    @FormUrlEncoded
+    fun eklenmemisDilListele(@Field("Pst_User_ID") Pst_User_ID: String): Call<DillerCevap>
+
+
+
 }

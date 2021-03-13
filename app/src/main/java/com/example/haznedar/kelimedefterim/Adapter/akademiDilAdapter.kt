@@ -12,6 +12,7 @@ import com.example.haznedar.kelimedefterim.Database.Diller
 import com.example.haznedar.kelimedefterim.R
 import com.squareup.picasso.Picasso
 
+
 class akademiDilAdapter(
     private val dillerListesi: java.util.ArrayList<Diller>,
     private val listener: akademiDilAdapter.OnItemClickListener
@@ -38,7 +39,6 @@ class akademiDilAdapter(
             dilResim = view.findViewById(R.id.ivAkademiDilBayrak)
 
         }
-
     }
 
     override fun onCreateViewHolder(

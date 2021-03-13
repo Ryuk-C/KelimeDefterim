@@ -12,8 +12,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#2196F3"
-        app:cardCornerRadius="@dimen/_25sdp"
-        app:strokeWidth="3dp">
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:strokeWidth="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

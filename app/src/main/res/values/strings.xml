@@ -2,4 +2,8 @@
     <string name="app_name">Kelime Defterim</string>
     <string name="_1_dil_kelime">1. Dil Kelime</string>
     <string name="kar_l_k">Karşılık</string>
+    <string name="yeni_liste_olu_tur">Yeni Liste Oluştur</string>
+    <string name="kelimeleri_s_rala">Kelimeleri Sırala</string>
+    <string name="ara">Ara</string>
+    <string name="tamam">Tamam</string>
 </resources>
