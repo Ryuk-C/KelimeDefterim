@@ -32,12 +32,10 @@ class akademiDilAdapter(
         var dil: TextView
         var dilResim: ImageView
 
-
         init {
             satirCardView = view.findViewById(R.id.cardViewAkademiDil)
             dil = view.findViewById(R.id.tvAkademiDilAd)
             dilResim = view.findViewById(R.id.ivAkademiDilBayrak)
-
         }
     }
 
@@ -66,7 +64,6 @@ class akademiDilAdapter(
 
             listener.OnItemClicked(veri.dil_id)
             Log.e("Seçili Dil : İD", veri.dil_id.toString())
-
         }
     }
 
