@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.haznedar.kelimedefterim.Database.CRUDCevap
 import com.example.haznedar.kelimedefterim.Database.KelimelerDaoInterface
 import com.example.haznedar.kelimedefterim.R
@@ -19,10 +21,14 @@ import retrofit2.Response
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var kdi: KelimelerDaoInterface
+    lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+
 
     }
 
@@ -78,4 +84,6 @@ class SplashActivity : AppCompatActivity() {
         }.start()
         super.onResume()
     }
+
+
 }
