@@ -54,7 +54,6 @@ class AkademiFragment : Fragment() {
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(rvAkademiDilTutucu)
 
-
         dilListele()
     }
 

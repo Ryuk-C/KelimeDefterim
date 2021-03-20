@@ -2,35 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_5sdp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardDelete"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_25sdp"
         app:strokeColor="#FB0202"
         android:layout_marginBottom="@dimen/_8sdp"
         app:strokeWidth="2dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnKelimeSil"
-                android:layout_width="@dimen/_250sdp"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/_25sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttontasarim1"
                 android:text="Tamam"
                 android:textStyle="bold"
-                app:backgroundTint="#FB0202"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/silinecekAnaKelime"
+                app:backgroundTint="#FB0202" />
 
             <TextView
                 android:id="@+id/silinecekAnaKelime"
@@ -39,6 +40,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="15dp"
                 android:text="TextView"
+                android:layout_below="@+id/ltAnimation"
+                android:layout_centerHorizontal="true"
                 android:textColor="#070707"
                 android:textSize="19sp"
                 app:layout_constraintBottom_toTopOf="@+id/btnKelimeSil"
@@ -47,17 +50,19 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/ltAnimation"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_110sdp"
-                app:layout_constraintBottom_toTopOf="@+id/silinecekAnaKelime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:layout_alignParentTop="true"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/trash1">
 
+
             </com.airbnb.lottie.LottieAnimationView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

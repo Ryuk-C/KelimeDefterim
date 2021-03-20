@@ -27,6 +27,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:textSize="@dimen/_15sdp"
+                android:layout_gravity="center_horizontal"
                 android:textStyle="bold"/>
 
             <LinearLayout
@@ -36,38 +37,14 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 >
 
-                <Spinner
-                    android:id="@+id/spnrDiller"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:gravity="center_vertical"
-                    >
-
-                </Spinner>
-
-                <com.google.android.material.card.MaterialCardView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEklenmemisDiller"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_50sdp"
-                    app:strokeWidth="@dimen/_1sdp"
-                    app:strokeColor="@color/black"
-                    >
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
 
-                    <TextView
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Liste İsmi"
-                        android:textSize="@dimen/_13sdp"
-                        >
-                    </TextView>
 
-                </com.google.android.material.card.MaterialCardView>
+
             </LinearLayout>
 
             <RelativeLayout

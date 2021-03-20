@@ -32,5 +32,6 @@
             app:lottie_rawRes="@raw/hello">
         </com.airbnb.lottie.LottieAnimationView>
 
+
     </RelativeLayout>
 </LinearLayout>

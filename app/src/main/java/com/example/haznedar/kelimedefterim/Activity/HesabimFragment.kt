@@ -14,7 +14,9 @@ import com.example.haznedar.kelimedefterim.Service.AlarmService
 import kotlinx.android.synthetic.main.hesabim_layout.*
 import java.util.*
 
-class HesabimFragment : Fragment() {
+class HesabimFragment : Fragment()
+
+{
 
     lateinit var  alarmService : AlarmService
     override fun onCreateView(
@@ -36,7 +38,6 @@ class HesabimFragment : Fragment() {
         btnCikisYap()
 
     }
-
 
 
     fun btnCikisYap() {

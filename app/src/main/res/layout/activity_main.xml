@@ -32,6 +32,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
         </FrameLayout>
+
         <com.etebarian.meowbottomnavigation.MeowBottomNavigation
             android:id="@+id/bnv_Main"
             android:layout_width="match_parent"
@@ -46,8 +47,7 @@
             app:mbn_selectedIconColor="#ffffff"
             app:mbn_shadowColor="#1f212121"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </LinearLayout>

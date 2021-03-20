@@ -50,6 +50,7 @@ class KayitActivity : AppCompatActivity() {
                     FancyToast.LENGTH_LONG,
                     FancyToast.WARNING,
                     true
+
                 ).show()
             } else {
                 kdi.kullaniciEkle(Pst_EMail, Pst_Sifre).enqueue(object :

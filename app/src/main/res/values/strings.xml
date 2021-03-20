@@ -6,4 +6,10 @@
     <string name="kelimeleri_s_rala">Kelimeleri Sırala</string>
     <string name="ara">Ara</string>
     <string name="tamam">Tamam</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="downloaded_models_label">Downloaded models: %1$s</string>
+    <string name="translate_progress">Translating...</string>
+
+
 </resources>

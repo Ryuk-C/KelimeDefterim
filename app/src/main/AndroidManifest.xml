@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.haznedar.kelimedefterim">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KelimeDefterim"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.KayitActivity" />
+
         <activity android:name=".Activity.GirisActivity" />
         <activity android:name=".Activity.SplashActivity">
             <intent-filter>
@@ -27,6 +28,6 @@
             android:windowSoftInputMode="adjustPan" />
 
         <receiver android:name=".Receiver.AlarmReceiver" />
-
     </application>
+
 </manifest>

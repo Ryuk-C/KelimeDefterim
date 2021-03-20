@@ -50,8 +50,7 @@ interface KelimelerDaoInterface {
 
     @POST("Haznedar/KelimeDefterim/delete_kelimeler.php")
     @FormUrlEncoded
-    fun kelimeSil(
-        @Field("Pst_Kelime_ID") Pst_Kelime_ID: Int,
+    fun kelimeSil(@Field("Pst_Kelime_ID") Pst_Kelime_ID: Int,
     ): Call<CRUDCevap>
 
     @POST("Haznedar/KelimeDefterim/update_kelimeler.php")
@@ -66,7 +65,6 @@ interface KelimelerDaoInterface {
     @POST("Haznedar/KelimeDefterim/EklenmemisDilListele.php")
     @FormUrlEncoded
     fun eklenmemisDilListele(@Field("Pst_User_ID") Pst_User_ID: String): Call<DillerCevap>
-
 
 
 }

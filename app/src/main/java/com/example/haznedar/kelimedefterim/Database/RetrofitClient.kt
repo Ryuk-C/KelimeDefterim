@@ -10,9 +10,9 @@ class RetrofitClient {
         fun getClient(baseUrl: String): Retrofit {
 
             return Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
         }
     }
 }

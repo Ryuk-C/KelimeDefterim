@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.Intent
 import io.karn.notify.Notify
 import android.text.format.DateFormat
+import android.util.Log
 import com.example.haznedar.kelimedefterim.Service.AlarmService
 import com.example.haznedar.kelimedefterim.Util.Constants
-import timber.log.Timber
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -45,7 +45,6 @@ class AlarmReceiver : BroadcastReceiver() {
     private fun setRepetitiveAlarm(alarmService: AlarmService) {
         val cal = Calendar.getInstance().apply {
             this.timeInMillis = timeInMillis + TimeUnit.DAYS.toMillis(7)
-            Timber.d("Set alarm for next week same time - ${convertDate(this.timeInMillis)}")
         }
         alarmService.setRepetitiveAlarm(cal.timeInMillis)
     }

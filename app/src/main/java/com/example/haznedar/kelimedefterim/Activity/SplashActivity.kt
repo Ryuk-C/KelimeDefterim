@@ -20,9 +20,11 @@ class SplashActivity : AppCompatActivity() {
 
     private lateinit var kdi: KelimelerDaoInterface
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
 
     }
 
@@ -36,8 +38,7 @@ class SplashActivity : AppCompatActivity() {
                 kdi = ApiUtils.getKelimelerDaoInterface()
 
                 val ogka = sp.getString("kullaniciAdi", "kullanici adi bulunmamaktadir").toString()
-                val ogks =
-                    sp.getString("kullaniciSifre", "kullanici sifre bulunmamaktadir").toString()
+                val ogks = sp.getString("kullaniciSifre", "kullanici sifre bulunmamaktadir").toString()
                 val ogkid = sp.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
 
                 kdi.kullaniciAra(ogka, ogks).enqueue(object :
@@ -62,7 +63,6 @@ class SplashActivity : AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         }
-
                     }
 
                     override fun onFailure(call: Call<CRUDCevap>, t: Throwable) {
@@ -78,4 +78,6 @@ class SplashActivity : AppCompatActivity() {
         }.start()
         super.onResume()
     }
+
+
 }

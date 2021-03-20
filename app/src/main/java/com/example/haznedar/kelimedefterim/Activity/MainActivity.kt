@@ -1,6 +1,7 @@
 package com.example.haznedar.kelimedefterim.Activity
 
 import android.os.Bundle
+import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        StrictMode.enableDefaults();
+
         bnv_Main.add(MeowBottomNavigation.Model(1, R.drawable.list))
         bnv_Main.add(MeowBottomNavigation.Model(2, R.drawable.akademi))
         bnv_Main.add(MeowBottomNavigation.Model(3, R.drawable.stream))
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             when (model.id){
                 1 -> replace(ListelerimFragment())
                 2 -> replace(AkademiFragment())
-                3 -> replace(HesabimFragment())
+                3 -> replace(TranslateFragment())
                 4 -> replace(HesabimFragment())
             }
             null
@@ -40,8 +43,6 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragmentTutucu, fragment)
         transaction.commit()
     }
-
-
 
     /*
     fun buttomBar() {

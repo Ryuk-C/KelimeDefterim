@@ -16,17 +16,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.haznedar.kelimedefterim.Activity.ListelerimFragment
 import com.example.haznedar.kelimedefterim.Database.Kelimeler
 import com.example.haznedar.kelimedefterim.R
-import com.example.haznedar.kelimedefterim.interfacee.KelimeSecInterface
 import kotlinx.android.synthetic.main.dialog_delete_kelime.view.*
 import kotlinx.android.synthetic.main.kelimeler_dialog_fragment.view.*
 import kotlinx.android.synthetic.main.update_kelimeler.view.*
 
 class kelimelerAdapter(
+
     private val kelimelerListesi: java.util.ArrayList<Kelimeler>,
-    private val kelimeSecInterface: KelimeSecInterface
 
 ) :
     RecyclerView.Adapter<kelimelerAdapter.kelimeKartiTasarimTutucu>() {
+
+    var kelimeSecYeni : (String) -> Unit = {_ ->}
 
     inner class kelimeKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -72,7 +73,8 @@ class kelimelerAdapter(
 
         holder.satirCardView.setOnClickListener {
 
-            kelimeSecInterface.kelimeSec(veri.kelime_id)
+            kelimeSecYeni.invoke(veri.kelime_id.toString())
+
             Log.e("Kelime ID:", veri.kelime_id.toString())
 
             val sp = holder.itemView.context.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
@@ -99,19 +101,16 @@ class kelimelerAdapter(
                 mBuilder1.window?.setGravity(Gravity.BOTTOM)
                 mBuilder1.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 mDialogView1.findViewById<TextView>(R.id.silinecekAnaKelime).text =
-                veri.ana_kelime + " kelimesi silinecektir!"
+                    veri.ana_kelime + " kelimesi silinecektir!"
 
                 mDialogView1.btnKelimeSil.setOnClickListener {
 
                     mBuilder0.dismiss()
-
                     Log.e("Kelime Sil", "Çalıştı")
                     ListelerimFragment().kelimeSil(veri.kelime_id)
-                    kelimelerListesi.clear()
-                    kelimelerListesi.addAll(java.util.ArrayList<Kelimeler>())
-                    notifyDataSetChanged()
+                    kelimelerListesi.removeAt(position)
+                    notifyItemChanged(position)
                     mBuilder1.dismiss()
-                    ListelerimFragment().kelimeListele("",ogkid)
                 }
             }
 
@@ -144,10 +143,10 @@ class kelimelerAdapter(
                         chgCumle1
                     )
                     kelimelerListesi.clear()
+                    ListelerimFragment().kelimeListele("", ogkid)
                     kelimelerListesi.addAll(java.util.ArrayList<Kelimeler>())
                     notifyDataSetChanged()
                     mBuilder3.dismiss()
-                    ListelerimFragment().kelimeListele("",ogkid)
 
                 }
             }

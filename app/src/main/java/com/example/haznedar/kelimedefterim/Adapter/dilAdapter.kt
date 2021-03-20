@@ -1,40 +1,45 @@
 package com.example.haznedar.kelimedefterim.Adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.haznedar.kelimedefterim.Database.Diller
 import com.example.haznedar.kelimedefterim.R
-import com.example.haznedar.kelimedefterim.interfacee.DilSecInterface
 import com.squareup.picasso.Picasso
 
 class dilAdapter(
+
     private val dillerListesi: java.util.ArrayList<Diller>,
-    private val dilSecInterface: DilSecInterface
 ) : RecyclerView.Adapter<dilAdapter.dilKartiTasarimTutucu>() {
 
+     var dilSecYeni : (String) -> Unit = {_ ->}
+     var selectedItemPosition: Int = 0
 
     inner class dilKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
 
         var satirCardView: CardView
         var dil: TextView
         var dilResim: ImageView
+        var dilLayout : LinearLayout
 
 
         init {
             satirCardView = view.findViewById(R.id.cardViewDil)
             dil = view.findViewById(R.id.tvDil)
             dilResim = view.findViewById(R.id.ivdilBayrak)
+            dilLayout = view.findViewById(R.id.LinearDil)
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): dilKartiTasarimTutucu {
-        val tasarim =
-            LayoutInflater.from(parent.context).inflate(R.layout.card_dil_tasarim, parent, false)
+        val tasarim = LayoutInflater.from(parent.context).inflate(R.layout.card_dil_tasarim, parent, false)
         return dilKartiTasarimTutucu(tasarim)
     }
 
@@ -48,11 +53,28 @@ class dilAdapter(
 
         Picasso.get().load(url).into(holder.dilResim)
 
+
         holder.satirCardView.setOnClickListener {
 
-            dilSecInterface.dilSec(veri.dil_id.toString())
+           // dilSecInterface.dilSec(veri.dil_id.toString())
+            dilSecYeni.invoke(veri.dil_id.toString())
+
+            selectedItemPosition = holder.adapterPosition
+            notifyDataSetChanged()
 
         }
+
+        if (selectedItemPosition == position){
+
+            holder.dilLayout.setBackgroundColor(Color.parseColor("#216afc"))
+            holder.dil.setTextColor(Color.parseColor("#FFFFFF"))
+
+
+        }else{
+            holder.dilLayout.setBackgroundColor(Color.parseColor("#FFFFFF"))
+            holder.dil.setTextColor(Color.parseColor("#808080"))
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -64,4 +86,5 @@ class dilAdapter(
         dillerListesi.addAll(newList)
         notifyDataSetChanged()
     }
+
 }
