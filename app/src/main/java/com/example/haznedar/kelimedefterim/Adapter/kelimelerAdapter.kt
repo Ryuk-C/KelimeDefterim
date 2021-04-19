@@ -86,6 +86,7 @@ class kelimelerAdapter(
                 .setView(mDialogView).show()
             mBuilder0.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+
             mDialogView.findViewById<TextView>(R.id.dfAnaKelime).text = veri.ana_kelime
             mDialogView.findViewById<TextView>(R.id.dfKarsilik).text = veri.kelime_karsilik
             mDialogView.findViewById<TextView>(R.id.dfCumle).text = veri.cumle
