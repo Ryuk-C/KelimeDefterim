@@ -29,7 +29,6 @@ class KayitActivity : AppCompatActivity() {
         btnKayitOlbtn.setOnClickListener {
             uyelikBaslat()
         }
-
     }
 
     fun uyelikBaslat() {

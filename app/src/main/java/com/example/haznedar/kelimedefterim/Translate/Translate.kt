@@ -1,7 +1,6 @@
 package com.example.haznedar.kelimedefterim.Translate
 
 import android.os.AsyncTask
-import com.example.haznedar.kelimedefterim.Activity.TranslateFragment
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import com.squareup.okhttp.*
