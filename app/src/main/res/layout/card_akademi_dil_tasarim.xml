@@ -66,10 +66,10 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView3"
-                android:layout_width="@dimen/_275sdp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_10sdp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="0dp"
                 app:cardBackgroundColor="#32BAF8"
                 app:cardCornerRadius="@dimen/_25sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -79,10 +79,10 @@
 
             <TextView
                 android:id="@+id/tvToplamKelime"
-                android:layout_width="@dimen/_50sdp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="5dp"
-                android:text="35"
+                android:text="3"
                 android:textColor="#03A9F4"
                 android:textSize="50sp"
                 android:textStyle="bold"

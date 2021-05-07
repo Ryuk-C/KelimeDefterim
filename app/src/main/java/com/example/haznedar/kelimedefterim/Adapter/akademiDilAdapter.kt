@@ -18,6 +18,8 @@ class akademiDilAdapter(
     private val listener: akademiDilAdapter.OnItemClickListener
 ) : RecyclerView.Adapter<akademiDilAdapter.akademiDilKartiTasarimTutucu>() {
 
+    var secilenKullaniciDilID : (String) -> Unit = {_ ->}
+
 
     interface OnItemClickListener {
 
@@ -31,11 +33,13 @@ class akademiDilAdapter(
         var satirCardView: CardView
         var dil: TextView
         var dilResim: ImageView
+        var toplamKelimeSayisi : TextView
 
         init {
             satirCardView = view.findViewById(R.id.cardViewAkademiDil)
             dil = view.findViewById(R.id.tvAkademiDilAd)
             dilResim = view.findViewById(R.id.ivAkademiDilBayrak)
+            toplamKelimeSayisi = view.findViewById(R.id.tvToplamKelime)
         }
     }
 
@@ -53,17 +57,18 @@ class akademiDilAdapter(
         val veri = dillerListesi.get(position)
 
         holder.dil.text = veri.dil_isim
-
+        holder.toplamKelimeSayisi.text = veri.toplamKelimeSayisi
 
         val url = "http://haznedar.de/Haznedar/KelimeDefterim/Resimler/Bayraklar/${veri.dil_resim}"
 
         Picasso.get().load(url).into(holder.dilResim)
 
-
         holder.satirCardView.setOnClickListener {
 
             listener.OnItemClicked(veri.dil_id)
             Log.e("Seçili Dil : İD", veri.dil_id.toString())
+
+            secilenKullaniciDilID.invoke(veri.dil_id.toString())
         }
     }
 

@@ -10,5 +10,8 @@ data class Diller(
     @SerializedName("DilAd")
     @Expose var dil_isim: String,
     @SerializedName("Icon")
-    @Expose var dil_resim: String
+    @Expose var dil_resim: String,
+    @SerializedName("ToplamKelimeSayisi")
+    @Expose var toplamKelimeSayisi: String
+
 ) : Serializable

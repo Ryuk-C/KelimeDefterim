@@ -3,7 +3,6 @@ package com.example.haznedar.kelimedefterim.Activity
 import android.os.Bundle
 import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.haznedar.kelimedefterim.R
@@ -11,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             when (model.id){
                 1 -> replace(ListelerimFragment())
                 2 -> replace(AkademiFragment())
-                3 -> replace(TranslateFragment())
+                // 3 -> replace(TranslateFragment())
                 4 -> replace(HesabimFragment())
             }
             null
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun replace(fragment: Fragment) {
+    private fun replace(fragment: androidx.fragment.app.Fragment) {
         val transaction: FragmentTransaction = getSupportFragmentManager().beginTransaction()
         transaction.replace(R.id.fragmentTutucu, fragment)
         transaction.commit()

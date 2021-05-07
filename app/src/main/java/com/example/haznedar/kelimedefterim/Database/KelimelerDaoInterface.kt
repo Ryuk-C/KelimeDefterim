@@ -1,5 +1,6 @@
 package com.example.haznedar.kelimedefterim.Database
 
+import com.example.haznedar.kelimedefterim.model.secmeliTestModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -66,5 +67,13 @@ interface KelimelerDaoInterface {
     @FormUrlEncoded
     fun eklenmemisDilListele(@Field("Pst_User_ID") Pst_User_ID: String): Call<DillerCevap>
 
+    @POST("Haznedar/KelimeDefterim/SecmeliTestSecenekGetir.php")
+    @FormUrlEncoded
+    fun coktanSecmeliTestSorusuGetir(
+        @Field("Pst_KullaniciDilID") Pst_KullaniciDilID: String
+
+    ): Call<secmeliTestModel>
+
 
 }
+

@@ -1,7 +1,9 @@
 package com.example.haznedar.kelimedefterim.Activity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,7 @@ import com.example.haznedar.kelimedefterim.Database.Diller
 import com.example.haznedar.kelimedefterim.Database.DillerCevap
 import com.example.haznedar.kelimedefterim.Database.KelimelerDaoInterface
 import com.example.haznedar.kelimedefterim.R
+import com.example.haznedar.kelimedefterim.Testler.CoktanSecmeliActivity
 import com.example.haznedar.szlk.ApiUtils
 import kotlinx.android.synthetic.main.akademi_layout.*
 import retrofit2.Call
@@ -26,6 +29,8 @@ class AkademiFragment : Fragment() {
     private lateinit var adapter3: akademiDilAdapter
     private lateinit var kdi: KelimelerDaoInterface
     private var selectedPosition = -1
+    var secilenKullaniciByDilID = "-5"
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,15 +51,23 @@ class AkademiFragment : Fragment() {
             }
         })
 
+
         kdi = ApiUtils.getKelimelerDaoInterface()
         rvAkademiDilTutucu.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         rvAkademiDilTutucu.adapter = adapter3
 
+
+        adapter3.secilenKullaniciDilID = {secilenKullaniciDilID ->
+            Log.d("secilenkelimeid",secilenKullaniciDilID)
+            secilenKullaniciByDilID = secilenKullaniciDilID.toInt().toString()
+        }
+
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(rvAkademiDilTutucu)
 
         dilListele()
+        coktanSecmeliSorularYonlendir()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,8 +99,6 @@ class AkademiFragment : Fragment() {
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
 
-
-
         kdi.tumDiller(ogkid).enqueue(object : Callback<DillerCevap> {
 
             override fun onResponse(call: Call<DillerCevap>?, response: Response<DillerCevap>?) {
@@ -111,4 +122,16 @@ class AkademiFragment : Fragment() {
         })
     }
 
+    fun coktanSecmeliSorularYonlendir(){
+
+        cvCoktanSecmeliYonlendir.setOnClickListener {
+
+            val intent = Intent()
+            intent.setClass(requireActivity(), CoktanSecmeliActivity::class.java)
+            intent.putExtra("kullanıcıDilID", secilenKullaniciByDilID)
+            Log.e("Giden", secilenKullaniciByDilID)
+            requireActivity().startActivity(intent)
+
+        }
+    }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Testler.CoktanSecmeliActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp">
+
+        <Chronometer
+            android:id="@+id/tvSayac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_15sdp"
+            android:layout_centerInParent="true">
+        </Chronometer>
+
+        <TextView
+            android:id="@+id/tvTestiSonlandir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentEnd="true"
+            android:text="Sonlandır >"
+            android:textColor="#FF0000"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/_15sdp">
+        </TextView>
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlCoktanSecmeliSorular"
+        android:layout_below="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>
