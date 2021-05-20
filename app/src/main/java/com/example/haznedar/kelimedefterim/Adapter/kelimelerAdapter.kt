@@ -110,6 +110,7 @@ class kelimelerAdapter(
                     Log.e("Kelime Sil", "Çalıştı")
                     ListelerimFragment().kelimeSil(veri.kelime_id)
                     kelimelerListesi.removeAt(position)
+                    notifyDataSetChanged()
                     notifyItemChanged(position)
                     mBuilder1.dismiss()
                 }

@@ -4,6 +4,7 @@ package com.example.haznedar.kelimedefterim.model
 import com.google.gson.annotations.SerializedName
 
 data class secmeliTestModel(
+
     @SerializedName("message")
     val message: String,
     @SerializedName("SoruSiklarJSON")
@@ -12,7 +13,9 @@ data class secmeliTestModel(
     val sorukelime: String,
     @SerializedName("success")
     val success: Int
+
 ) {
+
     data class SoruSiklarJSON(
         @SerializedName("DY1")
         val dY1: String,
@@ -31,6 +34,10 @@ data class secmeliTestModel(
         @SerializedName("Sik4")
         val sik4: String,
         @SerializedName("SecilenKelime")
-        val SecilenKelime: String
+        val SecilenKelime: String,
+        @SerializedName("Pst_KullaniciDilID")
+        val Pst_KullaniciDilID: String
+
+
     )
 }

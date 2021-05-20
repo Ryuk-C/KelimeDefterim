@@ -120,6 +120,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_15sdp"
             app:cardCornerRadius="@dimen/_5sdp"
+
             app:strokeColor="@color/viewColor"
             app:strokeWidth="1dp"
             >

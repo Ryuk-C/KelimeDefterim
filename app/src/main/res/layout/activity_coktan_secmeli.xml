@@ -12,6 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yenile"
+            android:id="@+id/btnYenile"/>
+
         <Chronometer
             android:id="@+id/tvSayac"
             android:layout_width="wrap_content"

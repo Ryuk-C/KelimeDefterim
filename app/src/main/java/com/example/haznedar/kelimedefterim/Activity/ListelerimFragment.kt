@@ -28,7 +28,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener{
+class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var urunlerListe: ArrayList<Kelimeler>
     private lateinit var dillerListe: ArrayList<Diller>
@@ -70,12 +70,12 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener{
         val ogkid = sp?.getString("kullanici_id", "").toString()
 
 
-        kelimeAdapterYeni.kelimeSecYeni = {secilenKelimeId ->
-            Log.d("secilenkelimeid",secilenKelimeId)
+        kelimeAdapterYeni.kelimeSecYeni = { secilenKelimeId ->
+            Log.d("secilenkelimeid", secilenKelimeId)
             kelimeByID = secilenKelimeId.toInt()
         }
 
-        dilAdapterYeni.dilSecYeni = {secilenDilId ->
+        dilAdapterYeni.dilSecYeni = { secilenDilId ->
 
             kullaniciByDilID = secilenDilId
             Bundle(kullaniciByDilID.toInt())
@@ -288,7 +288,8 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener{
                     .setView(mDialogView1)
                     .show()
 
-                val rvEklenmemisDiller = mDialogView1.findViewById<RecyclerView>(R.id.rvEklenmemisDiller)
+                val rvEklenmemisDiller =
+                    mDialogView1.findViewById<RecyclerView>(R.id.rvEklenmemisDiller)
                 rvEklenmemisDiller.layoutManager =
                     LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
                 rvEklenmemisDiller.adapter = eklenmemisDilAdapterYeni

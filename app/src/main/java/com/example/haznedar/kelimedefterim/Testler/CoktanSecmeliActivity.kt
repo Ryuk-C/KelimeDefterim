@@ -2,6 +2,8 @@ package com.example.haznedar.kelimedefterim.Testler
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Chronometer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +20,7 @@ import retrofit2.Response
 class CoktanSecmeliActivity : AppCompatActivity() {
 
     private lateinit var kdi: KelimelerDaoInterface
-    private var kullaniciDilID = "-5"
+    private var kullaniciDilID = "1"
     var coktanSecmeliTestAdapter = coktanSecmeliTestAdapter(arrayListOf())
     lateinit var kronometre : Chronometer
 
@@ -38,14 +40,19 @@ class CoktanSecmeliActivity : AppCompatActivity() {
         kronometreBaslat()
         kronometreSonlandir()
 
+        btnYenile.setOnClickListener {
+
+            testSorulariGetir(kullaniciDilID)
+        }
+
     }
 
 
-    fun testSorulariGetir(dilID : String){
+    fun testSorulariGetir(id:String){
 
         kdi = ApiUtils.getKelimelerDaoInterface()
 
-        kdi.coktanSecmeliTestSorusuGetir(dilID).enqueue(object : Callback<secmeliTestModel>{
+        kdi.coktanSecmeliTestSorusuGetir(id).enqueue(object : Callback<secmeliTestModel>{
             override fun onResponse(
                 call: Call<secmeliTestModel>,
                 response: Response<secmeliTestModel>
@@ -55,10 +62,14 @@ class CoktanSecmeliActivity : AppCompatActivity() {
 
                     val liste = response.body()?.soruSiklarJSON
 
-
                     if (liste != null) {
 
-                        coktanSecmeliTestAdapter.update(liste as java.util.ArrayList<secmeliTestModel.SoruSiklarJSON>)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            coktanSecmeliTestAdapter.update(liste as java.util.ArrayList<secmeliTestModel.SoruSiklarJSON>)
+                            Log.e("gelen_soru", liste.toString())
+
+                        }, 2000)
+
 
                     }
                 }
@@ -88,6 +99,4 @@ class CoktanSecmeliActivity : AppCompatActivity() {
         }
 
     }
-
-
 }

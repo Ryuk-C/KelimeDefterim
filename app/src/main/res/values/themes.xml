@@ -23,8 +23,5 @@
         <item name="iconPadding">0dp</item>
         <item name="iconGravity">textStart</item>
 
-
-
     </style>
-
 </resources>
