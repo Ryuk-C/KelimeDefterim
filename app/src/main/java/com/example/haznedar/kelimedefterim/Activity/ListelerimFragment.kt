@@ -30,11 +30,6 @@ import retrofit2.Response
 
 class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
-    private lateinit var urunlerListe: ArrayList<Kelimeler>
-    private lateinit var dillerListe: ArrayList<Diller>
-    lateinit var veriAdapter: ArrayAdapter<String>
-    private var recycler_view: RecyclerView? = null
-
     var kelimeAdapterYeni = kelimelerAdapter(arrayListOf())
     var dilAdapterYeni = dilAdapter(arrayListOf())
     var eklenmemisDilAdapterYeni = eklenmemisDilAdapter(arrayListOf())
@@ -65,10 +60,8 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
         kdi = ApiUtils.getKelimelerDaoInterface()
 
-
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "").toString()
-
 
         kelimeAdapterYeni.kelimeSecYeni = { secilenKelimeId ->
             Log.d("secilenkelimeid", secilenKelimeId)
@@ -80,13 +73,10 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
             kullaniciByDilID = secilenDilId
             Bundle(kullaniciByDilID.toInt())
             kelimeListele(kullaniciByDilID, ogkid)
-
         }
-
 
         dilListele()
         kelimeListele(kullaniciByDilID, ogkid)
-
     }
 
     fun kelimeListele(id: String, user_ID: String) {

@@ -91,7 +91,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:gravity="center"
-
                         android:text="Şifremi Unuttum"
                         android:textAllCaps="false"
                         android:textColor="#3F51B5"

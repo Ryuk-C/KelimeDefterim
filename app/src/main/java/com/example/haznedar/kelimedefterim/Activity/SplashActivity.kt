@@ -26,6 +26,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
 
+
     }
 
     override fun onResume() {
@@ -39,7 +40,6 @@ class SplashActivity : AppCompatActivity() {
 
                 val ogka = sp.getString("kullaniciAdi", "kullanici adi bulunmamaktadir").toString()
                 val ogks = sp.getString("kullaniciSifre", "kullanici sifre bulunmamaktadir").toString()
-                val ogkid = sp.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
 
                 kdi.kullaniciAra(ogka, ogks).enqueue(object :
                     Callback<CRUDCevap> {

@@ -25,6 +25,7 @@ class kelimelerAdapter(
     private val kelimelerListesi: java.util.ArrayList<Kelimeler>,
 
 ) :
+
     RecyclerView.Adapter<kelimelerAdapter.kelimeKartiTasarimTutucu>() {
 
     var kelimeSecYeni : (String) -> Unit = {_ ->}
@@ -36,13 +37,13 @@ class kelimelerAdapter(
         var kelimeKarsilik: TextView
         var toplamKelime: TextView?
 
-
         init {
             satirCardView = view.findViewById(R.id.cardViewListe)
             anaKelime = view.findViewById(R.id.tvAnaKelime)
             kelimeKarsilik = view.findViewById(R.id.tvkelimeKarsilik)
             toplamKelime = view.findViewById(R.id.tvToplamKelime)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): kelimeKartiTasarimTutucu {
