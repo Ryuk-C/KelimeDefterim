@@ -42,17 +42,16 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val inflat1 = inflater.inflate(R.layout.anasayfa_layout, container, false)
         (activity as AppCompatActivity).setSupportActionBar(inflat1.toolbar)
         return inflat1
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rvDil.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        rvDil.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         rvDil.adapter = dilAdapterYeni
 
         rvKelimeler.layoutManager = LinearLayoutManager(this.context)
@@ -79,7 +78,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         kelimeListele(kullaniciByDilID, ogkid)
     }
 
-    fun kelimeListele(id: String, user_ID: String) {
+    /* +1*/fun kelimeListele(id: String, user_ID: String) {
 
         kdi = ApiUtils.getKelimelerDaoInterface()
 
@@ -94,7 +93,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
                 if (response != null) {
 
                     val liste = response.body()?.kelimeler
-
 
                     if (liste != null) {
 
@@ -115,7 +113,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         })
     }
 
-    fun dilListele() {
+    /* +1*/fun dilListele() {
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "kullanici id bulunmamaktadir.").toString()
@@ -127,7 +125,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
                 if (response != null) {
 
                     val liste = response.body()?.diller
-
 
                     if (liste != null) {
 
@@ -143,7 +140,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         })
     }
 
-    fun eklenmemisDilListele() {
+    /* +1*/ fun eklenmemisDilListele() {
 
         val sp = this.activity?.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
         val ogkid = sp?.getString("kullanici_id", "").toString()
@@ -157,7 +154,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
                     val liste = response.body()?.diller
 
-
                     if (liste != null) {
 
                         eklenmemisDilAdapterYeni.update(liste as java.util.ArrayList<Diller>)
@@ -170,10 +166,9 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
 
             }
         })
-
     }
 
-    fun kelimeSil(kelimeID: Int) {
+    /* +1*/ fun kelimeSil(kelimeID: Int) {
 
         kdi = ApiUtils.getKelimelerDaoInterface()
 
@@ -212,7 +207,7 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
             })
     }
 
-    fun aramaYap(arananDeger: String, kullaniciDILID: Int) {
+    /* +1*/ fun aramaYap(arananDeger: String, kullaniciDILID: Int) {
 
         kdi.kelimeAra(arananDeger, kullaniciDILID).enqueue(object : Callback<KelimelerCevap> {
 
@@ -226,7 +221,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
                     val liste = response.body()?.kelimeler
 
                     if (liste != null) {
-
                         kelimeAdapterYeni.update(liste as java.util.ArrayList<Kelimeler>)
                     }
                 }
@@ -264,7 +258,6 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         val searchItem = menu.findItem(R.id.action_ara)
         val searchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(this)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -314,6 +307,4 @@ class ListelerimFragment : Fragment(), SearchView.OnQueryTextListener {
         }
         return true
     }
-
-
 }

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KelimeDefterim"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Testler.CoktanSecmeliActivity"></activity>
+        <activity android:name=".Testler.CoktanSecmeliActivity" />
         <activity android:name=".Testler.YazmaAlistirmasiActivity" />
         <activity android:name=".Testler.AlistirmaKartlariActivity" />
         <activity android:name=".Activity.GirisActivity" />

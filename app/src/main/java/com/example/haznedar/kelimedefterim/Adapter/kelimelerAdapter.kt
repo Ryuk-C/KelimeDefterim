@@ -24,11 +24,11 @@ class kelimelerAdapter(
 
     private val kelimelerListesi: java.util.ArrayList<Kelimeler>,
 
-) :
+    ) :
 
     RecyclerView.Adapter<kelimelerAdapter.kelimeKartiTasarimTutucu>() {
 
-    var kelimeSecYeni : (String) -> Unit = {_ ->}
+    var kelimeSecYeni: (String) -> Unit = { _ -> }
 
     inner class kelimeKartiTasarimTutucu(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -71,14 +71,14 @@ class kelimelerAdapter(
         holder.kelimeKarsilik.text = veri.kelime_karsilik
         holder.toplamKelime?.text = kelimelerListesi.size.toString()
 
-
         holder.satirCardView.setOnClickListener {
 
             kelimeSecYeni.invoke(veri.kelime_id.toString())
 
             Log.e("Kelime ID:", veri.kelime_id.toString())
 
-            val sp = holder.itemView.context.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
+            val sp =
+                holder.itemView.context.getSharedPreferences("GirisBilgi", Context.MODE_PRIVATE)
             val ogkid = sp?.getString("kullanici_id", "").toString()
 
             val mDialogView = LayoutInflater.from(holder.itemView.context)
@@ -150,7 +150,6 @@ class kelimelerAdapter(
                     kelimelerListesi.addAll(java.util.ArrayList<Kelimeler>())
                     notifyDataSetChanged()
                     mBuilder3.dismiss()
-
                 }
             }
         }
